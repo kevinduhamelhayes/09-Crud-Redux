@@ -2,7 +2,7 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx,vue}",
+    "./src/**/*/.{js,jsx,ts,tsx,vue}",
     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {

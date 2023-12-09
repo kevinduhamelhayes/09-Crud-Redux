@@ -18,14 +18,15 @@ const syncWithDatabaseMiddleware: Middleware = store => next => action => {
 
 		fetch(`https://jsonplaceholder.typicode.com/users/${userIdToRemove}`, {
 			method: 'DELETE'
-		})
-			.then(res => {
-				// if (res.ok) {
-				// 	toast.success(`Usuario ${payload} eliminado correctamente`)
-				// }
-				throw new Error('Error al eliminar el usuario')
-			})
-			.catch(err => {
+	})
+	.then(res => {
+			if (res.ok) {
+					toast.success(`Usuario ${payload} eliminado correctamente`);
+			} else {
+					throw new Error('Error al eliminar el usuario');
+			}
+	})
+	.catch(err => {
 				toast.error(`Error deleting user ${userIdToRemove}`)
 				if (userToRemove) store.dispatch(rollbackUser(userToRemove))
 				console.log(err)
