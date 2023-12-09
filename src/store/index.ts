@@ -38,8 +38,12 @@ export const store = configureStore({
 	reducer: {
 		users: usersReducer,
 	},
-	middleware: [persistanceLocalStorageMiddleware, syncWithDatabaseMiddleware],
+	middleware: (getDefaultMiddleware) => 
+		getDefaultMiddleware()
+			.concat(persistanceLocalStorageMiddleware)
+			.concat(syncWithDatabaseMiddleware),
 });
+
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
